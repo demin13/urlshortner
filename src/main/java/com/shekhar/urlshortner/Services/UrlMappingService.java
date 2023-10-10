@@ -16,34 +16,41 @@ public class UrlMappingService {
     private final UrlMappingRepository urlMappingRepository;
 
     @Autowired
-    public UrlMappingService(UrlMappingRepository urlMappingRepository){
+    public UrlMappingService(UrlMappingRepository urlMappingRepository) {
         this.urlMappingRepository = urlMappingRepository;
     }
 
-    public UrlMapping shortenUrl(String originalUrl, LocalDate expiryDate){
+    public UrlMapping shortenUrl(String originalUrl, LocalDate expiryDate) {
         String shortenedUrl = generateShortenedUrl();
         UrlMapping urlMapping = new UrlMapping(originalUrl, shortenedUrl, LocalDateTime.now(), expiryDate);
         return urlMappingRepository.save(urlMapping);
     }
 
-    public Optional<UrlMapping> findByOriginalUrl(String originalUrl){
+    public Optional<UrlMapping> findByOriginalUrl(String originalUrl) {
         return urlMappingRepository.findByOriginalUrl(originalUrl);
     }
 
-    public Optional<UrlMapping> findByShortenedUrl(String shortenedUrl){
+    public Optional<UrlMapping> findByShortenedUrl(String shortenedUrl) {
         return urlMappingRepository.findByShortenedUrl(shortenedUrl);
     }
 
-    public List<UrlMapping> findByExpiryDate(LocalDate date){
+    public List<UrlMapping> findByExpiryDate(LocalDate date) {
         return urlMappingRepository.findByExpiryDate(date);
     }
 
     private String generateShortenedUrl() {
         UUID uuid = UUID.randomUUID();
         byte[] bytes = new byte[16];
-        ByteBuffer.wrap(bytes).putLong(uuid.getMostSignificantBits()).putLong(uuid.getLeastSignificantBits());
+        ByteBuffer.wrap(bytes)
+                .putLong(uuid.getMostSignificantBits())
+                .putLong(uuid.getLeastSignificantBits());
         String base64 = Base64.getUrlEncoder().withoutPadding().encodeToString(bytes);
-        return "http://localhost:8080/" + base64.substring(0, 9);
+        return base64.substring(0, 9);
+    }
+
+    public String getLongUrl(String shortUrl) {
+        Optional<UrlMapping> url = urlMappingRepository.findByShortenedUrl(shortUrl);
+        return url.orElseGet(UrlMapping::new).getOriginalUrl();
     }
 
 

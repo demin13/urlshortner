@@ -9,9 +9,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EntityScan(basePackages = "com.shekhar.urlshortner.Entities")
 @EnableScheduling
 public class UrlshortnerApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(UrlshortnerApplication.class, args);
 	}
 
 }
+
+

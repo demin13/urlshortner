@@ -9,6 +9,8 @@ import org.springframework.web.servlet.HandlerInterceptor;
 public class CreateShortnerInterceptor  implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler){
+        System.out.println("in interceptor");
+        System.out.println(request.getRequestURL());
         request.setAttribute("valid", true);
         return true;
     }
