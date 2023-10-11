@@ -33,7 +33,7 @@
 
 ### Some Screenshots attached
 
-![image1](screenshots/image1.png)
+![image1](screenshots/image1.PNG)
 
 ![image2](screenshots/image2.png)
 
