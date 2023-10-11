@@ -33,16 +33,13 @@
 
 ### Some Screenshots attached
 
-![img.png](img.png)
+![image1](screenshots/image1.png)
 
-![img_1.png](img_1.png)
+![image2](screenshots/image2.png)
 
-![img_2.png](img_2.png)
+![image3](screenshots/image3.png)
     
-![img_3.png](img_3.png)
+![image4](screenshots/image4.png)
 
-![img_4.png](img_4.png)
-
-
-                                 Thanks
+![image5](screenshots/image5.png)
     
