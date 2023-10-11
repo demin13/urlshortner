@@ -30,16 +30,3 @@
     npm start
 
 ** Note:- Database needs to be configured either in docker container or local and is accessible on port 5432
-
-### Some Screenshots attached
-
-![image1](/screenshots/image1.png)
-
-![image2](screenshots/image2.png)
-
-![image3](screenshots/image3.png)
-    
-![image4](screenshots/image4.png)
-
-![image5](screenshots/image5.png)
-    
