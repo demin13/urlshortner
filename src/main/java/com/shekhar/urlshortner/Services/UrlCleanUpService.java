@@ -28,5 +28,4 @@ public class UrlCleanUpService {
             System.out.println("Error"+e);
         }
     }
-
 }

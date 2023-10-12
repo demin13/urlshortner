@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
 import {TextField, Button, Container, Grid} from '@mui/material';
-import {postApiRequest, API_BASE_URL} from './apiService';
+import { postApiRequest } from './apiService';
 import {DesktopDatePicker} from "@mui/x-date-pickers/DesktopDatePicker";
 import {AdapterDateFns} from "@mui/x-date-pickers/AdapterDateFns";
 import {LocalizationProvider} from "@mui/x-date-pickers/LocalizationProvider";
 import format from 'date-fns/format';
+import { Link } from "react-router-dom";
 
 
 const styles = {
@@ -50,8 +51,8 @@ function UrlShorterHomePage() {
             .then((response) => {
                 if (response.status === 200) {
                     setResponse({
-                        "shortenUrl": `${API_BASE_URL}/${response.data.shortenedUrl}`,
-                        "status_code": `${response.status}`
+                        "shortenUrl": `http://localhost:3000/${response.data.shortenedUrl}`,
+                        "statusCode": `${response.status}`
                     });
                 }
             })
@@ -71,6 +72,12 @@ function UrlShorterHomePage() {
         };
         handlePostClick(updatedUrlWithDate);
     };
+
+    const convertToShortenCode = (shortenUrl) => {
+        const segments = shortenUrl.split('/').filter(Boolean);
+        return segments[segments.length - 1];
+    };
+
 
     return (
         <Container style={styles.container}>
@@ -117,8 +124,9 @@ function UrlShorterHomePage() {
                 </Button>
             </div>
             <div style={styles.responseText}>
-                <h3>{response.status_code}</h3>
-                <a href={response.shortenUrl} target="_blank" rel="noopener noreferrer">{response.shortenUrl}</a>
+                <Link to={convertToShortenCode(`${response.shortenUrl}`)} target="_blank" rel="noopener noreferrer">
+                    {response.shortenUrl}
+                </Link>
             </div>
         </Container>
     );
