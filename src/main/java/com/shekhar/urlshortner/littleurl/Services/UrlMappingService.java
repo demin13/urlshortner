@@ -1,7 +1,7 @@
-package com.shekhar.urlshortner.Services;
+package com.shekhar.urlshortner.littleurl.Services;
 
-import com.shekhar.urlshortner.Entities.UrlMapping;
-import com.shekhar.urlshortner.Repository.UrlMappingRepository;
+import com.shekhar.urlshortner.littleurl.Entities.UrlMapping;
+import com.shekhar.urlshortner.littleurl.Repository.UrlMappingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

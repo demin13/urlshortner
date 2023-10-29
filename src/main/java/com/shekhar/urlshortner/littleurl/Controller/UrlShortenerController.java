@@ -1,8 +1,12 @@
-package com.shekhar.urlshortner.Controller;
+package com.shekhar.urlshortner.littleurl.Controller;
 
 
-import com.shekhar.urlshortner.Entities.UrlMapping;
-import com.shekhar.urlshortner.Services.UrlMappingService;
+import com.shekhar.urlshortner.Auth.Enums.LogicsEnum;
+import com.shekhar.urlshortner.Auth.Enums.PermissionsEnum;
+import com.shekhar.urlshortner.Auth.Permission;
+import com.shekhar.urlshortner.littleurl.Dto.UrlShortenDTO;
+import com.shekhar.urlshortner.littleurl.Entities.UrlMapping;
+import com.shekhar.urlshortner.littleurl.Services.UrlMappingService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +28,9 @@ public class UrlShortenerController {
     }
 
     @PostMapping("api/v1/url/shorten/")
-    public ResponseEntity<Object> shortenUrl(@RequestBody UrlShortenRequest request) throws RuntimeException {
+    @Permission(permissions = {PermissionsEnum.ALLOWREAD, PermissionsEnum.ALLOWWRITE, PermissionsEnum.ALLOWUPDATE},
+            type = LogicsEnum.ALL)
+    public ResponseEntity<Object> shortenUrl(@RequestBody UrlShortenDTO request) throws RuntimeException {
         Map<String, Object> responseData = new HashMap<>();
         try {
             UrlMapping urlMapping = urlMappingService.shortenUrl(request.getOriginalUrl(), request.getExpiryDate());
