@@ -1,6 +1,6 @@
-package com.shekhar.urlshortner.Services;
+package com.shekhar.urlshortner.littleurl.Services;
 
-import com.shekhar.urlshortner.Repository.UrlMappingRepository;
+import com.shekhar.urlshortner.littleurl.Repository.UrlMappingRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;

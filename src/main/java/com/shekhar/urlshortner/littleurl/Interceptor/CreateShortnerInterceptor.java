@@ -1,4 +1,4 @@
-package com.shekhar.urlshortner.Interceptor;
+package com.shekhar.urlshortner.littleurl.Interceptor;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

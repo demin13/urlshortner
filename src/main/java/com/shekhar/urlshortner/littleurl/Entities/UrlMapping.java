@@ -1,4 +1,4 @@
-package com.shekhar.urlshortner.Entities;
+package com.shekhar.urlshortner.littleurl.Entities;
 
 import jakarta.persistence.*;
 import lombok.*;
